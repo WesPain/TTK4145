@@ -8,23 +8,27 @@ pthread_mutex_t a_mutex = PTHREAD_MUTEX_INITIALIZER; //initialiaztion of mutex
 
 // Note the return type: void*
 void* incrementingThreadFunction(){
-    pthread_mutex_lock(&a_mutex); //declaration of mutex
+     //declaration of mutex
     for (int j = 0; j < 1000000; j++) {
 	// TODO: sync access to i
+    pthread_mutex_lock(&a_mutex);
 	i++;
+     pthread_mutex_unlock(&a_mutex);
     }
-    pthread_mutex_unlock(&a_mutex);
+   
     return NULL;
     
 }
 
 void* decrementingThreadFunction(){
-    pthread_mutex_lock(&a_mutex);
-    for (int j = 0; j < 1000003; j++) {
+    
+    for (int j = 0; j < 1000000; j++) {
 	// TODO: sync access to i
+    pthread_mutex_lock(&a_mutex);
 	i--;
-    }
     pthread_mutex_unlock(&a_mutex);
+    }
+    
     return NULL;
 }
 
