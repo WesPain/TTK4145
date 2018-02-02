@@ -10,7 +10,7 @@ import(
 func main() {
 	
 	//set up send-socket
-	remote_addr, _ := net.ResolveUDPAddr("udp", "129.241.187.255:20014")
+	remote_addr, _ := net.ResolveUDPAddr("udp", "129.241.187.255:20019")
 	socket_send, err := net.DialUDP("udp", nil, remote_addr)
 
 	if err != nil {
@@ -18,7 +18,7 @@ func main() {
 	}
 	
 	//set up listen-socket
-	port, _ := net.ResolveUDPAddr("udp", ":20014")
+	port, _ := net.ResolveUDPAddr("udp", ":20019")
 	socket_listen, err := net.ListenUDP("udp", port)
 
 	if err != nil {
